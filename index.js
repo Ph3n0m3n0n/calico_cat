@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var stormpath = require('express-stormpath');
 
 app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
@@ -12,6 +13,10 @@ Book =require('./models/book');
 // Connect to Mongoose
 mongoose.connect('mongodb://calico:lilith69@ds113608.mlab.com:13608/calico_cat');
 var db = mongoose.connection;
+
+app.use(stormpath.init(app,{
+	website: true
+}));
 
 app.get('/', function(req, res){
 	res.send('Please use /api/books or /api/category');
@@ -105,6 +110,11 @@ app.delete('/api/books/:_id', function(req, res){
 		}
 		res.json(book);
 	});
+});
+
+
+app.on('stormpath.ready', function () {
+  console.log('Stormpath Ready!');
 });
 
 app.listen(3000);
