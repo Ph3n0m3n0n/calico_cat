@@ -1,35 +1,35 @@
 var mongoose = require('mongoose');
 
-// Genre Schema
+// Book Schema
 var bookSchema = mongoose.Schema({
-	title: {
-		type: 'String',
-		required: 'true'
-	},
-	genre: {
-		type: 'String',
+	title:{
+		type: String,
 		required: true
 	},
-	description: {
-		type: 'String'
-	},
-	author: {
-		type: 'String',
+	genre:{
+		type: String,
 		required: true
 	},
-	publisher: {
-		type: 'String'
+	description:{
+		type: String
 	},
-	pages: {
-		type: 'String'
+	author:{
+		type: String,
+		required: true
 	},
-	img_url: {
-		type: 'String'
+	publisher:{
+		type: String
 	},
-	buy_bn_url: {
-		type: 'String'
+	pages:{
+		type: String
 	},
-	create_date: {
+	image_url:{
+		type: String
+	},
+	buy_url:{
+		type: String
+	},
+	create_date:{
 		type: Date,
 		default: Date.now
 	}
@@ -37,22 +37,22 @@ var bookSchema = mongoose.Schema({
 
 var Book = module.exports = mongoose.model('Book', bookSchema);
 
-// Function to GET books
+// Get Books
 module.exports.getBooks = function(callback, limit){
 	Book.find(callback).limit(limit);
 }
 
-// Function to GET one book by its ID
+// Get Book
 module.exports.getBookById = function(id, callback){
 	Book.findById(id, callback);
 }
 
-// ADD a book function
+// Add Book
 module.exports.addBook = function(book, callback){
 	Book.create(book, callback);
 }
 
-// Update a genre function
+// Update Book
 module.exports.updateBook = function(id, book, options, callback){
 	var query = {_id: id};
 	var update = {
@@ -62,13 +62,14 @@ module.exports.updateBook = function(id, book, options, callback){
 		author: book.author,
 		publisher: book.publisher,
 		pages: book.pages,
-		img_url: book.img_url,
-		buy_bn_url: book.buy_bn_url
+		image_url: book.image_url,
+		buy_url: book.buy_url
 	}
 	Book.findOneAndUpdate(query, update, options, callback);
 }
 
-module.exports.removeBooks = function(id, callback){
+// Delete Book
+module.exports.removeBook = function(id, callback){
 	var query = {_id: id};
 	Book.remove(query, callback);
 }
