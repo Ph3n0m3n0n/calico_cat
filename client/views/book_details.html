@@ -6,13 +6,13 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-4">
-        <img src="{{book.img_url}}">
+        <img style="width: 350px; height: 350px;" src="{{book.img_url}}">
       </div>
-      <div class="col-md-8">
+      <div style="height: 50%; width: 50%;" class="col-md-4">
         </p>{{book.description}}</p>
         <ul class="list-group">
-          <li class="list-group-item">Category: {{book.genre}}</li>
-          <li class="list-group-item">Artist: {{book.author}}</li>
+          <li class="list-group-item">Category: {{book.category}}</li>
+          <li class="list-group-item">Artist: {{book.artist}}</li>
 <!--           <li class="list-group-item">Publisher: {{book.publisher}}</li>
           <li class="list-group-item">Pages: {{book.pages}}</li> -->
         </ul>

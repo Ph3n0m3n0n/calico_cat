@@ -5,13 +5,13 @@
   <div class="panel-body">
     <div class="row">
       <div ng-repeat="book in books">
-        <div class="col-md-6">
-          <div class="col-md-6">
+        <div class="col-md-4">
+          <div class="col-md-4">
             <h4>{{book.title}}</h4>
             <p>{{book.description}}</p>
             <a class="btn btn-primary" href="#/books/details/{{book._id}}">View Details</a>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <img class="thumbnail" src="{{book.img_url}}">
           </div>
         </div>
