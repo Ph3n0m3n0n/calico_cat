@@ -10,7 +10,7 @@ Genre =require('./models/category');
 Book =require('./models/book');
 
 // Connect to Mongoose
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds113608.mlab.com:13608/calico_cat');
+mongoose.connect('mongodb://calico:lilith69@ds113608.mlab.com:13608/calico_cat');
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
