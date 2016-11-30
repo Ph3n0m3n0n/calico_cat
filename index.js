@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var stormpath = require('express-stormpath');
+var dotenv = require('dotenv');
 
 app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
